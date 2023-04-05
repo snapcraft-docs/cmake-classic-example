@@ -1,20 +1,22 @@
-name: cmake-example
+name: cmake-classic-example
 base: core22
 version: '0.1'
-summary: An example snap for a CMake project
+summary: An example classic snap for a CMake project
 description: |
-  Shows how to create a snap for an application that uses CMake for
-  build and installation.
+  Shows how to create a classic confinement snap for an application that
+  uses CMake for build and installation.
 
 grade: devel
-confinement: strict
+confinement: classic
 
 apps:
-  cmake-example:
+  cmake-classic-example:
     command: usr/bin/cmake-example
 
 parts:
   cmake-example:
     plugin: cmake
     cmake-parameters: [-DCMAKE_INSTALL_PREFIX=/usr]
+    build-attributes:
+      - enable-patchelf
     source: .
